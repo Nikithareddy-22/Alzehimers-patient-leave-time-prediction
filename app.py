@@ -58,7 +58,7 @@ def send_email(receiver_email, predicted_time):
     sender_password = "kukj yzan obdh ssuw"        # replace with App Password
 
     subject = "Alzheimer Patient Alert"
-    body = f"⏰ The system predicts the patient may leave home at: {predicted_time}"
+    body = f" The system predicts the patient may leave home at: {predicted_time}"
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = sender_email
@@ -72,7 +72,7 @@ def send_email(receiver_email, predicted_time):
         server.quit()
         return True
     except Exception as e:
-        st.error(f"❌ Failed to send email: {e}")
+        st.error(f" Failed to send email: {e}")
         return False
 
 # ---- Prediction function ----
@@ -140,7 +140,7 @@ if submitted:
     wake_time_str = wake_time.strftime("%H:%M")
     predicted_time_str = predict_leave_time(input_data, model, label_encoders, scaler, feature_columns, wake_time_str)
     
-    st.success(f"⏰ Predicted Leave Time: {predicted_time_str}")
+    st.success(f" Predicted Leave Time: {predicted_time_str}")
 
     # Save to SQLite
     save_patient_to_db(input_data, predicted_time_str)
